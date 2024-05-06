@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
+import { ThemeProvider } from '@/components/theme-provider'
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,8 +20,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <ClerkProvider>
+      <html
+        lang='en'
+        className='scroll-smooth antialiased'
+        suppressHydrationWarning
+      >
+        <body className={`flex min-h-screen flex-col ${inter.className}`}>
+          <ThemeProvider
+            enableSystem
+            attribute='class'
+            defaultTheme='system'
+            disableTransitionOnChange
+          >
+            <Header />
+            <main className='grow'>{children}</main>
+            <Footer />
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
