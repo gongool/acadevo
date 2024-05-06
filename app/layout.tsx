@@ -33,9 +33,10 @@ export default function RootLayout({
             defaultTheme='system'
             disableTransitionOnChange
           >
-            <Header />
+            {/* <Header /> */}
+
             <main className='grow'>{children}</main>
-            <Footer />
+            {/* <Footer /> */}
           </ThemeProvider>
         </body>
       </html>
