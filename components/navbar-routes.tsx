@@ -40,6 +40,7 @@ const NavbarRoutes = () => {
       <SignedIn>
         <UserButton />
       </SignedIn>
+      
     </div>
   );
 };
