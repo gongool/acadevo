@@ -9,9 +9,9 @@ import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Acadevo - Learning Management System (LMS)",
+  title: "Acadevo - Learning Management System",
   description:
-    "Acadevo is a professional-grade Learning Management System (LMS) developed by Ahmed Jamal (Gongool). Powered by Next.js, Prisma ORM, Shadcn/ui, and Stripe, it provides educators and learners with a seamless online learning experience.",
+    "Acadevo is a professional-grade Learning Management System (LMS) developed by Ahmed Jamal (Gongool). Powered by Next.js, Prisma ORM, Shadcn/ui, Clerk, and Stripe, it provides educators and learners with a seamless online learning experience.",
 };
 
 export default function RootLayout({
