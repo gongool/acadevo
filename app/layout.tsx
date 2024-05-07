@@ -2,11 +2,10 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import { ThemeProvider } from '@/components/theme-provider'
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { ThemeProvider } from "@/components/theme-provider";
+import ToastProvider from "@/components/providers/toaster-provider";
 
-const poppins = Poppins({ subsets: ["latin"] , weight: "400" });
+const poppins = Poppins({ subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
   title: "Acadevo - Learning Management System",
@@ -22,20 +21,24 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html
-        lang='en'
-        className='scroll-smooth antialiased'
+        lang="en"
+        className="scroll-smooth antialiased"
         suppressHydrationWarning
       >
         <body className={`flex min-h-screen flex-col ${poppins.className}`}>
           <ThemeProvider
             enableSystem
-            attribute='class'
-            defaultTheme='system'
+            attribute="class"
+            defaultTheme="system"
             disableTransitionOnChange
           >
             {/* <Header /> */}
 
-            <main className='grow'>{children}</main>
+            <main className="grow">
+              <ToastProvider />
+              {children}
+            </main>
+
             {/* <Footer /> */}
           </ThemeProvider>
         </body>
