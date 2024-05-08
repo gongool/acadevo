@@ -21,7 +21,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-
 const formSchema = z.object({
   title: z.string().min(1, {
     message: "Title is required",
@@ -42,15 +41,16 @@ const CreatePage = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      const response = await axios.post("/api/course", values);
+      const response = await axios.post("/api/courses", values);
       router.push(`/teacher/courses/${response.data.id}`);
+      toast.success("Course created successfully!");
     } catch {
-      toast.error("An error occurred. Please try again");
+      toast.error("An error occurred. Please try again!");
     }
   };
 
   return (
-    <div className="max-w-5xl mx-auto flex md:items-center md:justify-center h-full p-6 mt-4">
+    <div className="max-w-5xl mx-auto flex md:items-center md:justify-center h-full p-6 mt-4 ">
       <div>
         <h1 className="text-2xl">Enter Course Title</h1>
         <p className="text-sm text-slate-600">
