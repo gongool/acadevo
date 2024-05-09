@@ -4,6 +4,7 @@ import { auth } from "@clerk/nextjs/server";
 import { LayoutDashboard } from "lucide-react";
 import { redirect } from "next/navigation";
 import TitleForm from "./_components/title-form";
+import DescriptionForm from "./_components/description-form";
 
 const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const { userId } = auth();
@@ -37,7 +38,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const completionText = `(${completedFields}/${totalFields})`;
 
   return (
-    <div className="p-6">
+    <div className="p-6 md:ml-14">
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-y-2">
           <h1 className="text-2xl font-medium">Course Setup</h1>
@@ -46,16 +47,14 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
           </span>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-col-2 gap-6 mt-16">
+      <div className="grid grid-cols-1 md:grid-col-2 gap-6 mt-10">
         <div>
           <div className="flex items-center gap-x-2">
-            <IconBadge icon={LayoutDashboard} />
+            <IconBadge size = "sm" icon={LayoutDashboard} />
             <h2 className="text-xl">Customize Your Course</h2>
           </div>
-          <TitleForm 
-          initialData = {course}
-          courseId = {course.id}
-          />
+          <TitleForm initialData={course} courseId={course.id} />
+          <DescriptionForm initialData={course} courseId={course.id} />
         </div>
       </div>
     </div>
