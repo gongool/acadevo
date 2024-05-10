@@ -9,19 +9,10 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Course } from "@prisma/client";
 
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
 
 import { Button } from "@/components/ui/button";
 import { ImageIcon, Pencil, PlusCircle } from "lucide-react";
 import toast from "react-hot-toast";
-import { cn } from "@/lib/utils";
-import { Textarea } from "@/components/ui/textarea";
 import { FileUpload } from "@/components/file-upload";
 
 interface ImageFormProps {
@@ -30,7 +21,7 @@ interface ImageFormProps {
 }
 
 const formSchema = z.object({
-  ImageUrl: z.string().min(1, {
+  imageUrl: z.string().min(1, {
     message: "Image is required",
   }),
 });
@@ -45,7 +36,7 @@ const ImageForm = ({ initialData, courseId }: ImageFormProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      ImageUrl: initialData?.imageUrl || "",
+      imageUrl: initialData?.imageUrl || "",
     },
   });
 
@@ -106,11 +97,11 @@ const ImageForm = ({ initialData, courseId }: ImageFormProps) => {
             endpoint="courseImage"
             onChange={(url) => {
               if (url) {
-                onSubmit({ ImageUrl: url });
+                onSubmit({ imageUrl: url });
               }
             }}
           />
-          <div className="text-sm  text-muted-foreground mt-4 ">
+          <div className="text-sm  text-muted-foreground mt-4 italic ">
             16:9 aspect ratio recommended
           </div>
         </div>
