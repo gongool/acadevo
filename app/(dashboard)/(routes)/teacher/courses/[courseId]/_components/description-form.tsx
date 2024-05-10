@@ -6,18 +6,17 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import {Course} from "@prisma/client"
+
 
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Pencil } from "lucide-react";
 import toast from "react-hot-toast";
@@ -25,9 +24,7 @@ import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
 
 interface DescriptionFormProps {
-  initialData: {
-    description: string  | null ;
-  };
+  initialData: Course;
   courseId: string;
 }
 
@@ -46,7 +43,9 @@ const DescriptionForm = ({ initialData, courseId }: DescriptionFormProps) => {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: initialData,
+    defaultValues: {
+      description: initialData.description || ""
+    }
   });
 
   const { isSubmitting, isValid } = form.formState;
@@ -75,13 +74,19 @@ const DescriptionForm = ({ initialData, courseId }: DescriptionFormProps) => {
               Edit Description
             </>
           )}
-          
         </Button>
       </div>
 
-      {!isEditing && <p className = {cn(
-        "text-sm mt-2" , !initialData.description && "text-slate-500 italic"
-      )}>{initialData.description || "No Description "}</p>}
+      {!isEditing && (
+        <p
+          className={cn(
+            "text-sm mt-2",
+            !initialData.description && "text-slate-500 italic"
+          )}
+        >
+          {initialData.description || "No Description "}
+        </p>
+      )}
 
       {isEditing && (
         <Form {...form}>
