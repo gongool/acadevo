@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Poppins , Merriweather} from "next/font/google";
+import { Montserrat , Lato } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/theme-provider";
 import ToastProvider from "@/components/providers/toaster-provider";
 
-const merriweather = Merriweather({ subsets: ["latin"], weight: [ "400" , "700"] });
+const lato = Lato({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
   title: "Acadevo - Learning Management System",
@@ -25,7 +25,7 @@ export default function RootLayout({
         className="scroll-smooth antialiased"
         suppressHydrationWarning
       >
-        <body className={`flex min-h-screen flex-col ${merriweather.className}`}>
+        <body className={`flex min-h-screen flex-col ${lato.className}`}>
           <ThemeProvider
             enableSystem
             attribute="class"
