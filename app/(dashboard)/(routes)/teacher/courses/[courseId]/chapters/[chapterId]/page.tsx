@@ -2,7 +2,7 @@ import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Bolt, Eye } from "lucide-react";
+import { ArrowLeft, Bolt, Eye, Video } from "lucide-react";
 import { IconBadge } from "@/components/icon-badge";
 import ChapterTitleForm from "./_components/chapter-title-form";
 import ChapterDescriptionForm from "./_components/chapter-description-form";
@@ -42,6 +42,7 @@ const ChapterIdPage = async ({
 
   return (
     <div className="p-6">
+
       <div className="flex items-center justify-between">
         <div className="w-full">
           <Link
@@ -63,7 +64,7 @@ const ChapterIdPage = async ({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
+      <div className="grid grid-col-1 md:grid-cols-2 gap-6 mt-16">
         <div className="space-y-4">
           <div>
             <div className="flex items-center gap-x-2">
@@ -85,13 +86,28 @@ const ChapterIdPage = async ({
             <IconBadge icon={Eye} />
             <h2 className="text-xl">Access Settings</h2>
           </div>
-          <ChapterAccessForm 
-           initialData={chapter}
-           courseId={params.courseId}
-           chapterId={params.chapterId}
+          <ChapterAccessForm
+            initialData={chapter}
+            courseId={params.courseId}
+            chapterId={params.chapterId}
           />
         </div>
+
+
+        <div>
+        <div className="flex items-center gap-x-2">
+        <IconBadge icon={Video} />
+        <h2 className="text-xl">Add a Video</h2>
       </div>
+      
+
+      </div>
+
+      
+      </div>
+
+
+
     </div>
   );
 };
