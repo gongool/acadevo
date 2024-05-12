@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Bolt } from "lucide-react";
 import { IconBadge } from "@/components/icon-badge";
+import ChapterTitleForm from "./_components/chapter-title-form";
 
 const ChapterIdPage = async ({
   params,
@@ -67,7 +68,11 @@ const ChapterIdPage = async ({
               <IconBadge icon={Bolt} />
               <h2 className="text-xl">Customize Your Chapter</h2>
             </div>
-            {/**TODO ChapterTitleForm */}
+      <ChapterTitleForm
+      initialData={chapter}
+      courseId={params.courseId}
+      chapterId={params.chapterId}
+      />
           </div>
         </div>
       </div>
