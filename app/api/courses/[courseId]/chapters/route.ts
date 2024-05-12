@@ -50,7 +50,7 @@ export async function POST(
         })
 
         return NextResponse.json(chapter);
-        
+
 
 
     } catch (error) {

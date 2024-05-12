@@ -21,6 +21,7 @@ import { Pencil, PlusCircle } from "lucide-react";
 import toast from "react-hot-toast";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
+import ChaptersList from "./chapters-list";
 
 interface ChaptersFormProps {
   initialData: Course & { chapters: Chapter[] };
@@ -113,12 +114,18 @@ const ChaptersForm = ({ initialData, courseId }: ChaptersFormProps) => {
           )}
         >
           {!initialData.chapters.length && "No Chapters"}
-          {/**TODO Add a list of chapters  */}
+          <ChaptersList 
+          onEdit={()=> {}}
+          onReorder ={() => {}}
+          items = {initialData.chapters || []}
+
+          
+          />
         </div>
       )}
       {!isCreating && (
         <p className="text-xs text-muted-foreground mt-4">
-          Drag & Drop to Rearrange Chapters
+          Drag & Drop to Reorder Chapters
         </p>
       )}
     </div>
