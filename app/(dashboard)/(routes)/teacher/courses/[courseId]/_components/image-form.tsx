@@ -54,7 +54,7 @@ const ImageForm = ({ initialData, courseId }: ImageFormProps) => {
   };
 
   return (
-    <div className=" mt-6 border rounded-md p-4  bg-slate-100 dark:bg-transparent">
+    <div className=" mt-6 border rounded-md p-4  bg-slate-100  dark:bg-gray-900">
       <div className="font-medium flex items-center justify-between">
         Course Image
         <Button onClick={toggleEdit} variant="ghost">

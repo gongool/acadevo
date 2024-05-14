@@ -4,8 +4,8 @@ const Logo = () => {
   return (
    <Image
    priority
-   height={100}
-   width={100}
+   height={88}
+   width={88}
    alt="acadevo logo"
    src= '/images/acadevo.svg'
 className="rounded-sm"
