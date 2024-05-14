@@ -22,8 +22,6 @@ import { Button } from "@/components/ui/button";
 import { Pencil } from "lucide-react";
 import toast from "react-hot-toast";
 import { cn } from "@/lib/utils";
-import { Editor } from "@/components/editor";
-import { Preview } from "@/components/preview";
 
 interface ChapterAccessFormProps {
   initialData: Chapter;
@@ -32,7 +30,7 @@ interface ChapterAccessFormProps {
 }
 
 const formSchema = z.object({
-  isFree: z.boolean().default(false),
+  isFree: z.boolean().default(false).optional(),
 });
 
 const ChapterAccessForm = ({
@@ -49,7 +47,7 @@ const ChapterAccessForm = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      isFree: Boolean(initialData.isFree),
+      isFree: true
     },
   });
 
@@ -64,7 +62,7 @@ const ChapterAccessForm = ({
       toast.success("Chapter updated successfully!");
       toggleEdit();
       router.refresh();
-    } catch (error) {
+    } catch (error) { 
       toast.error("An error occurred. Please try again!");
     }
   };
@@ -113,8 +111,8 @@ const ChapterAccessForm = ({
                 <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md p-4 border">
                   <FormControl>
                     <Checkbox
-                      checked={field.value}
-                      onCheckChange={field.onChange}
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
                     />
                   </FormControl>
                   <div className="space-y-1 leading-none">

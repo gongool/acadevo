@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Pencil, PlusCircle, Video } from "lucide-react";
 import toast from "react-hot-toast";
 import { FileUpload } from "@/components/file-upload";
+import MuxPlayer from "@mux/mux-player-react";
 
 interface ChapterVideoFormProps {
   initialData: Chapter & { muxData?: MuxData | null };
@@ -19,22 +20,26 @@ interface ChapterVideoFormProps {
 }
 
 const formSchema = z.object({
-  videoUrl: z.string().min(1)
+  videoUrl: z.string().min(1),
 });
 
-const ChapterVideoForm = ({ initialData, courseId , chapterId }: ChapterVideoFormProps) => {
+const ChapterVideoForm = ({
+  initialData,
+  courseId,
+  chapterId,
+}: ChapterVideoFormProps) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const toggleEdit = () => setIsEditing((current) => !current);
 
   const router = useRouter();
 
-
-
-
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}`, values);
+      await axios.patch(
+        `/api/courses/${courseId}/chapters/${chapterId}`,
+        values
+      );
       toast.success("Chapter updated successfully!");
       toggleEdit();
       router.refresh();
@@ -72,7 +77,11 @@ const ChapterVideoForm = ({ initialData, courseId , chapterId }: ChapterVideoFor
           </div>
         ) : (
           <div className="relative aspect-video mt-2">
-           Video Uploaded
+            <MuxPlayer
+              playbackId={initialData?.muxData?.playbackId || ""}
+              streamType="on-demand"
+            />
+            
           </div>
         ))}
 
@@ -87,13 +96,14 @@ const ChapterVideoForm = ({ initialData, courseId , chapterId }: ChapterVideoFor
             }}
           />
           <div className="text-sm  text-muted-foreground mt-4 italic ">
-          Upload this Chapter&apos;s Video
+            Upload this Chapter&apos;s Video
           </div>
         </div>
       )}
       {initialData.videoUrl && !isEditing && (
-        <div className="text-sm text-muted-foreground mt-2">
-          Please note that video processing may require several minutes. If the video does not appear, kindly consider refreshing the page
+        <div className="text-sm text-muted-foreground mt-2 italic">
+          Please note that video processing may require several minutes. If the
+          video does not appear, kindly consider refreshing the page
         </div>
       )}
     </div>
