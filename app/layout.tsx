@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Montserrat , Lato } from "next/font/google";
+import { Lato } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/theme-provider";
 import ToastProvider from "@/components/providers/toaster-provider";
+import { ConfettiProvider } from "@/components/providers/confetti-provider";
 
 const lato = Lato({ subsets: ["latin"], weight: ["400", "700"] });
 
@@ -35,6 +36,7 @@ export default function RootLayout({
             {/* <Header /> */}
 
             <main className="grow">
+              <ConfettiProvider />
               <ToastProvider />
               {children}
             </main>
