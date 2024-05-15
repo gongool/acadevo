@@ -25,8 +25,7 @@ export const ConfirmModal = ({ children, onConfirm }: ConfirmModalProps) => {
         <AlertDialogHeader>
           <AlertDialogTitle>Confirmation Required</AlertDialogTitle>
           <AlertDialogDescription>
-            Are you sure you want to proceed with this action? Please note that
-            this action cannot be undone
+          Confirm action. This action cannot be undone
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
