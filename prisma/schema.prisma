@@ -107,6 +107,8 @@ model Purchase {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+ // To Prevent the user from Purchasing the course two times 
+  @@unique([userId, courseId])
   @@index([courseId])
 }
 
