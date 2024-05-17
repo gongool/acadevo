@@ -9,7 +9,7 @@ interface GetChapterProps {
 
 
 
-const GetChapter = async ({
+const getChapter = async ({
     userId,
     courseId,
     chapterId,
@@ -117,4 +117,4 @@ const GetChapter = async ({
     }
 }
 
-export default GetChapter
+export default getChapter

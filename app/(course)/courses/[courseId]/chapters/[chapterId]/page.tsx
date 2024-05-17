@@ -5,7 +5,7 @@ import { Preview } from "@/components/preview";
 import { File } from "lucide-react";
 
 import Banner from "@/components/banner";
-import GetChapter from "@/actions/get-chapter";
+import getChapter from "@/actions/get-chapter";
 
 import CourseProgressButton from "./_components/course-progress-button";
 import CourseEnrollButton from "./_components/course-enroll-button";
@@ -30,7 +30,7 @@ const ChapterIdPage = async ({
     nextChapter,
     userProgress,
     purchase,
-  } = await GetChapter({
+  } = await getChapter({
     userId,
     chapterId: params.chapterId,
     courseId: params.courseId,
