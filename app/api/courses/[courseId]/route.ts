@@ -2,6 +2,7 @@ import Mux from '@mux/mux-node';
 import { db } from "@/lib/db"
 import { auth } from "@clerk/nextjs/server"
 import { NextResponse } from "next/server"
+import { isTeacher } from '@/lib/teacher';
 
 
 
@@ -19,7 +20,7 @@ export async function DELETE(
 
         const { userId } = auth();
 
-        if (!userId) {
+        if (!userId || !isTeacher(userId)) {
             return new NextResponse("Unauthorized", { status: 401 })
         }
 

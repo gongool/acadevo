@@ -31,7 +31,7 @@ interface CategoryFormProps {
 const formSchema = z.object({
   categoryId: z.string().min(1),
 });
-
+ 
 const CategoryForm = ({
   initialData,
   courseId,
@@ -106,7 +106,7 @@ const CategoryForm = ({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Combobox options={...options} {...field}/>
+                    <Combobox options={...options} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
