@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { Pencil } from "lucide-react";
 import toast from "react-hot-toast";
 import { cn } from "@/lib/utils";
+
 import { Combobox } from "@/components/ui/combobox";
 
 interface CategoryFormProps {
@@ -31,7 +32,7 @@ interface CategoryFormProps {
 const formSchema = z.object({
   categoryId: z.string().min(1),
 });
- 
+
 const CategoryForm = ({
   initialData,
   courseId,
@@ -106,7 +107,11 @@ const CategoryForm = ({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Combobox options={...options} {...field} />
+                    <Combobox
+                     options={options}
+                     value={field.value}
+                     onChange={(value: string) => field.onChange(value)}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
