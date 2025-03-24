@@ -165,10 +165,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Ahmed Jamal - [@gongool](https://twitter.com/gongool) - gongool@hotmail.com
 
-Project Link: [https://github.com/yourusername/acadevo](https://github.com/yourusername/acadevo)
+Project Link: [https://github.com/gongool/acadevo](https://github.com/gongool/acadevo)
 
 ---
 
 <p align="center">
-  Made with ❤️ by <a href="https://github.com/yourusername">Your Name</a>
+  Made with ❤️ by <a href="https://github.com/gongool">Ahmed Jamal</a>
 </p>
